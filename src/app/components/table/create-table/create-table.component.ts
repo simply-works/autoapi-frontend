@@ -41,8 +41,6 @@ export class CreateTableComponent implements OnInit {
       tableName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(8)]],
       column: this.formBuilder.array([this.addFields()])
     });
-    // this.formArr.push(this.formBuilder.group({name: 'id', type: 'Number', primaryKey: true, disabled: true}));
-
   }
 
   onSubmit(): void {
@@ -96,7 +94,7 @@ export class CreateTableComponent implements OnInit {
   }
 
   getValidity(i) {
-    return (<FormArray>this.form.get('column')).controls[i].invalid;
+    return (this.form.get('column') as FormArray).controls[i].invalid;
   }
 
 }

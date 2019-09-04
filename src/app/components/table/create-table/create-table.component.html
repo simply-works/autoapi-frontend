@@ -40,10 +40,9 @@
               Column Name
             </label>
             <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
-            <!-- {{submitted && getValidity(i)}}
             <div *ngIf="submitted && getValidity(i)">
-              <span *ngIf="submitted && getValidity(i)"> Name and type are required</span>
-            </div> -->
+              <span class="errorMsg" *ngIf="submitted && getValidity(i)"> Name and type are required</span>
+            </div>
           </div>
           <div class="col-sm-3">
             <label for="type">
@@ -53,8 +52,8 @@
               <option *ngFor="let obj of types" [value]="obj">{{obj}}</option>
             </select>
             <div *ngIf="submitted && form.get('column').errors" class="invalid-feedback">
-                <div *ngIf="form.get('column').errors.required"> Column Name is Mandatory</div>
-              </div>
+              <div *ngIf="form.get('column').errors.required"> Column Name is Mandatory</div>
+            </div>
           </div>
           <div class="col-sm-2" ngbRadioGroup name="primaryKey" formControlName='primaryKey' [(ngModel)]="model">
             <label for="name">

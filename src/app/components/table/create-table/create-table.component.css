@@ -4,3 +4,8 @@
     justify-content: center;
     margin-top: 80px;
 }
+
+.errorMsg {
+    color: #dc3545;
+    font-size: 80%
+}

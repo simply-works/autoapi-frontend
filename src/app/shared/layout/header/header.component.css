@@ -4,6 +4,11 @@
 .mainHeader{
     z-index: 9;
 }
-a.hover {
+.login {
+    cursor: pointer;
+    color: white;
+}
+
+.drobdownitem {
     cursor: pointer;
 }

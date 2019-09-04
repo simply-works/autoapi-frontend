@@ -19,15 +19,15 @@
         <a class="navbar-brand" routerLink="/">LOGO</a>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" (click)="login()" *ngIf="!currentUser">Log in</a>
+                <a class="nav-link login" (click)="login()"  *ngIf="!currentUser">Log in</a>
             </li>
             <li class="nav-item" ngbDropdown display="dynamic" *ngIf="currentUser" placement="bottom-right">
-                <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+                <a class="nav-link login" ngbDropdownToggle id="navbarDropdown3" role="button">
                     <span class="fa fa-user"></span>
                 </a>
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown3"  class="dropdown-menu">
-                    <a class="dropdown-item" href="#">profile</a>
-                    <a class="dropdown-item" (click)="logout()">logout</a>
+                    <a class="dropdown-item drobdownitem" >profile</a>
+                    <a class="dropdown-item drobdownitem" (click)="logout()">logout</a>
                 </div>
             </li>
         </ul>
