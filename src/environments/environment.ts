@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://192.168.1.82:3000',
+  baseURL: 'http://ec2-3-9-97-225.eu-west-2.compute.amazonaws.com',
   awsmobile : {
     aws_project_region: 'eu-west-2',
     aws_cognito_region: 'eu-west-2',

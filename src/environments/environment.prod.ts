@@ -1,8 +1,13 @@
 export const environment = {
   production: true,
-  baseURL: 'http://192.168.1.82:3000',
-  cognitoPool: {
-    UserPoolId: 'us-east-1_EwhpEh6RR',
-    ClientId: '2to87p666bs1j7entkfrbs1io9'
+  baseURL: 'http://ec2-3-9-97-225.eu-west-2.compute.amazonaws.com',
+  awsmobile : {
+    aws_project_region: 'eu-west-2',
+    aws_cognito_region: 'eu-west-2',
+    aws_user_pools_id: 'eu-west-2_Vp0hZRuA8',
+    aws_user_pools_web_client_id: '43b083auborldt90hvb08pefth',
+    domain: 'autoapi.auth.eu-west-2.amazoncognito.com',
+    redirectUrl: 'http://localhost:4200/dashboard',
+    logoutUrl: 'http://localhost:4200/home'
   }
 };

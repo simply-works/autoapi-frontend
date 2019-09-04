@@ -27,7 +27,7 @@
                 </button>
             </div>
         </div>
-        <div formArrayName="column" *ngFor="let col of form.get('column').controls; let i = index" class="form-group">
+        <div formArrayName="column" *ngFor="let col of form.get('column'); let i = index" class="form-group">
             <div [formGroupName]="i">
                 <div class="form-group" class="row cols-md-12">
                     <label class="col-sm-2 control-label" for="name">
@@ -41,7 +41,7 @@
                             <option *ngFor="let obj of types" [value]="obj">{{obj}}</option>
                         </select>
                     </div>
-                    <div class="col-sm-2" *ngIf="form.get('column').length > 1">
+                    <div class="col-sm-2" >
 
                         <button type="button" ngbTooltip="Remove column" placement="right" class="btn btn-primary"
                             (click)="removeOnButtonClick(i)">
