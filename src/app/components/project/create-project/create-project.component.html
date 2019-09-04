@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Create Project</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="projectName">Enter Project Name</label>
+      <input type="text" formControlName="projectName" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
+      <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
+        <div *ngIf="f.projectName.errors.required">Project Name is required</div>
+        <div *ngIf="f.projectName.errors.maxlength">Project Name must be atmost 30 characters</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancel')">Cancel</button>
+  </div>
+</form>

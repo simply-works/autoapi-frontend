@@ -1,0 +1,49 @@
+<!-- <br>
+<button class="btn btn-primary" (click)="createDatabase()">Create Database</button>
+<ul *ngFor="let database of databases">
+    <li>
+        {{database.name}} <button type="button" ngbAutofocus class="btn btn-danger"
+            (click)="deleteDatabase(database)"><span class="fa fa-remove"></span></button>
+        <app-list-table [databaseId]="database.id"></app-list-table>
+    </li>
+</ul> -->
+
+<div class="row">
+    <div class="col-lg-10">
+        <h2><a href="#" ngbTooltip="View projects" [routerLink]="['/list-project']">{{projectName}}</a> > Databases</h2>
+    </div>
+    <div class="col-lg-2">
+        <button type="button" placement="bottom" ngbTooltip="Create Database" class="btn btn-success"
+            (click)="createDatabase()"><span class="fa fa-plus"></span>
+        </button>
+    </div>
+
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Database Name</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Last Updated Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let database of databases; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                <a (click)="viewDatabaseDetails(database.id, database.name)">{{database.name}}</a>
+            </td>
+            <td>
+                <button type="button" ngbAutofocus class="btn btn-primary" ngbTooltip="View database"
+                    (click)="viewDatabaseDetails(database.id, database.name)"><span
+                        class="fa fa-eye"></span></button>&nbsp;
+                <button type="button" ngbAutofocus class="btn btn-danger" ngbTooltip="delete database"
+                    (click)="deleteDatabase(database)"><span class="fa fa-trash"></span></button>
+            </td>
+            <td>{{database.created_at | date: 'dd/MM/yyyy'}}</td>
+            <td>{{database.updated_at | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+    </tbody>
+</table>

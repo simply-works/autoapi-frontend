@@ -1,0 +1,61 @@
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="navbar-brand" routerLink="/">LOGO</a>
+        <a class="nav-link " routerLink="/dashboard" *ngIf="currentUser">Home</a>
+        <a class="nav-link " routerLink="/login" *ngIf="!currentUser">Log in</a>
+        <a class="nav-link " routerLink="/signup" *ngIf="!currentUser">Sign up</a>
+        <a class="nav-item nav-link " routerLink="/create-project" *ngIf="currentUser">create project</a>
+        <a class="nav-item nav-link " routerLink="/list-project" *ngIf="currentUser">list project</a>
+        <a class="nav-item nav-link " (click)="logout()" *ngIf="currentUser">logout</a>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mainHeader">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainHeaderNav"
+        aria-controls="mainHeaderNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainHeaderNav">
+        <a class="navbar-brand" routerLink="/">LOGO</a>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" (click)="login()" *ngIf="!currentUser">Log in</a>
+            </li>
+            <li class="nav-item" ngbDropdown display="dynamic" *ngIf="currentUser" placement="bottom-right">
+                <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+                    <span class="fa fa-user"></span>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="navbarDropdown3"  class="dropdown-menu">
+                    <a class="dropdown-item" href="#">profile</a>
+                    <a class="dropdown-item" (click)="logout()">logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- 
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <span class="navbar-brand">LOGO</span>
+    <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!currentUser">
+            <a class="nav-link" (click)="login()" style="cursor: pointer" role="button">
+              login
+            </a>
+          </li>
+        <li class="nav-item" *ngIf="currentUser" ngbDropdown display="dynamic" placement="bottom-right">
+          <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+            <span class="fa fa-user"></span>
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+            <a class="dropdown-item" href="#">profile</a>
+            <a class="dropdown-item" (click)="logout()">logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav> -->

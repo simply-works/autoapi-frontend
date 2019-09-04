@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Database</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+        <div class="form-group" [ngClass]="{'has-error': ((form.get('tableName').touched ||
+                     form.get('tableName').dirty) &&
+                     form.get('tableName').errors)}">
+            <label class="col-sm-12 control-label" for="tableName">Enter Table Name</label>
+            <div class="col-sm-8">
+                <input type="text" formControlName="tableName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form.get('tableName').errors }" />
+                <div *ngIf="submitted && form.get('tableName').errors" class="invalid-feedback">
+                    <div *ngIf="form.get('tableName').errors.required"> Table Name is Mandatory</div>
+                    <div *ngIf="form.get('tableName').errors.minlength ||
+                        form.get('tableName').errors.maxlength">Invalid Table Name</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <button type="button" class="btn btn-primary" ngbTooltip="Add column" (click)="addOnButtonClick()">
+                    <span class="fa fa-plus-circle"></span>
+                </button>
+            </div>
+        </div>
+        <div formArrayName="column" *ngFor="let col of form.get('column').controls; let i = index" class="form-group">
+            <div [formGroupName]="i">
+                <div class="form-group" class="row cols-md-12">
+                    <label class="col-sm-2 control-label" for="name">
+                        column Name
+                    </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" aria-placeholder="type" formControlName="type" id="sel1">
+                            <option *ngFor="let obj of types" [value]="obj">{{obj}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2" *ngIf="form.get('column').length > 1">
+
+                        <button type="button" ngbTooltip="Remove column" placement="right" class="btn btn-primary"
+                            (click)="removeOnButtonClick(i)">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button [disabled]="loading" class="btn btn-primary">save</button>
+        <img *ngIf="loading" class="pl-3"
+            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancel')">Cancel</button>
+    </div>
+</form>

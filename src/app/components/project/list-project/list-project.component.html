@@ -1,0 +1,67 @@
+<!-- <div class="row">
+    <div class="col-lg-8">
+        <h2>Project List</h2>
+    </div>
+    <div class="col-lg-4 right-align"><button type="button" [routerLink]="['/create-project']"
+            class="btn btn-primary">create new Project</button></div>
+
+</div>
+<div *ngFor="let project of projects">
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+        <ngb-panel title="{{project.name}}">
+            <ng-template ngbPanelContent>
+                Database List
+                <app-list-database [projectId]="project.id"></app-list-database>
+
+                <button type="button" ngbAutofocus class="btn btn-danger" (click)="open(project)">Delete Project<span
+                        class="fa fa-trash"></span></button>
+            </ng-template>
+
+        </ngb-panel>
+    </ngb-accordion>
+</div> -->
+<div class="row">
+    <div class="col-lg-10">
+        <h2>Projects</h2>
+    </div>
+    <div class="col-lg-2">
+        <button type="button" placement="bottom" ngbTooltip="Create project" class="btn btn-success"
+            (click)="createProject()">
+            <span class="fa fa-plus"></span>
+        </button>
+    </div>
+
+</div>
+<div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Last Updated Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of projects; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                <a (click)="viewProjectDetails(project.id, project.name)">{{project.name }}</a>
+            </td>
+            <td>
+                <button type="button" ngbAutofocus class="btn btn-primary" ngbTooltip="view project Details"
+                    (click)="viewProjectDetails(project.id, project.name)">
+                    <span class="fa fa-eye"></span>
+                </button>&nbsp;
+                <button type="button" ngbAutofocus class="btn btn-danger" ngbTooltip="delete project"
+                    (click)="deleteProject(project)">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </td>
+            <td>{{project.created_at | date: 'dd/MM/yyyy'}}</td>
+            <td>{{project.updated_at | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

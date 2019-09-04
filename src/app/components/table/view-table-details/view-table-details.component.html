@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Table Details</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+
+  <table class="table table-striped">
+    <thead>
+      <div>
+        <th>Table Name: {{tableDetails.name}}</th>
+        <th>Created: {{tableDetails.created_at| date: 'dd/MM/yyyy' }} </th>
+      </div>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Primary key</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let key of tableData">
+        <td>{{  key.name  }}</td>
+        <td>{{ key.type }}</td>
+        <td *ngIf="key.primaryKey"><span class="fa fa-check" aria-hidden="true"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancel')">Close</button>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Create Database</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="databaseName">Enter Database Name</label>
+      <input type="text" formControlName="databaseName" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.databaseName.errors }" />
+      <div *ngIf="submitted && f.databaseName.errors" class="invalid-feedback">
+        <div *ngIf="f.databaseName.errors.required">Database Name is required</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancel')">Cancel</button>
+  </div>
+</form>

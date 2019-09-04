@@ -1,0 +1,9 @@
+.rightalign {
+    float: right;
+}
+.mainHeader{
+    z-index: 9;
+}
+a.hover {
+    cursor: pointer;
+}

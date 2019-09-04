@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "autoapi-project-dev-20190830145250-authRole",
+            "UnauthRoleArn": "arn:aws:iam::639407324607:role/autoapi-project-dev-20190830145250-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::639407324607:role/autoapi-project-dev-20190830145250-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "autoapi-project-dev-20190830145250-deployment",
+            "UnauthRoleName": "autoapi-project-dev-20190830145250-unauthRole",
+            "StackName": "autoapi-project-dev-20190830145250",
+            "StackId": "arn:aws:cloudformation:eu-west-2:639407324607:stack/autoapi-project-dev-20190830145250/bd45ab20-cb07-11e9-87db-0a4e95df1c9a"
+        }
+    }
+}
