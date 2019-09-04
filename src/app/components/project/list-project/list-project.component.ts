@@ -45,7 +45,7 @@ export class ListProjectComponent implements OnInit {
       if (err.status === 400) {
         return;
       } else {
-        this.toastService.showErrorMessage(err.message);
+        this.toast.showErrorMessage(err.message);
       }
     });
   }

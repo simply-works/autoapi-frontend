@@ -94,7 +94,7 @@ export class CreateTableComponent implements OnInit {
   }
 
   getValidity(i) {
-    return (this.form.get('column') as FormArray).controls[i].invalid;
+    return this.formArr.controls[i].invalid;
   }
 
 }
