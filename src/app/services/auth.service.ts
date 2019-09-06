@@ -152,7 +152,7 @@ export class AuthService {
   // }
 
   getAuthToken(code, grantType, type) {
-    const url = `https://autoapi.auth.eu-west-2.amazoncognito.com/oauth2/token`;
+    const url = `https://${environment.awsmobile.domain}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -161,9 +161,9 @@ export class AuthService {
     };
     const body = new HttpParams()
       .set('grant_type', grantType)
-      .set('client_id', '43b083auborldt90hvb08pefth')
+      .set('client_id', environment.awsmobile.aws_user_pools_web_client_id)
       .set(`${type}`, code)
-      .set('redirect_uri', 'http://localhost:4200/dashboard');
+      .set('redirect_uri', environment.awsmobile.redirectUrl);
 
     return this.http.post<any>(url, body.toString(), httpOptions);
   }
