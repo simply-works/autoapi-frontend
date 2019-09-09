@@ -3,6 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { AuthService } from '../services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
@@ -11,10 +12,10 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
      }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (request.url === 'https://autoapi.auth.eu-west-2.amazoncognito.com/oauth2/token') {
+        if (request.url === environment.awsmobile.tokenUrl) {
             return next.handle(request);
         }
-        if (request.url === 'https://autoapi.auth.eu-west-2.amazoncognito.com/logout') {
+        if (request.url === environment.awsmobile.logoutUrl) {
             return next.handle(request);
         }
 

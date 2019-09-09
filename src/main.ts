@@ -8,7 +8,7 @@ import amplify from './aws-exports';
 
 const oauth = {
   // Domain name
-  domain: 'autoapi.auth.eu-west-2.amazoncognito.com',
+  domain: environment.awsmobile.domain,
 
   // Authorized scopes
   scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
@@ -17,7 +17,7 @@ const oauth = {
   redirectSignIn: environment.awsmobile.redirectUrl,
 
   // Sign out URL
-  redirectSignOut: environment.awsmobile.logoutUrl,
+  redirectSignOut: environment.awsmobile.logoutRedirectUrl,
 
   // 'code' for Authorization code grant,
   // 'token' for Implicit grant

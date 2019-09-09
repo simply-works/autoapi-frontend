@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const URL = `https://${environment.awsmobile.domain}/login?response_type=code&client_id=${environment.awsmobile.aws_user_pools_web_client_id}&redirect_uri=${environment.awsmobile.redirectUrl}`;
+    const URL = `${environment.awsmobile.domain}/login?response_type=code&client_id=${environment.awsmobile.aws_user_pools_web_client_id}&redirect_uri=${environment.awsmobile.redirectUrl}`;
     window.location.assign(URL);
   }
 

@@ -8,6 +8,8 @@ export const environment = {
     aws_user_pools_web_client_id: '43b083auborldt90hvb08pefth',
     domain: 'autoapi.auth.eu-west-2.amazoncognito.com',
     redirectUrl: 'http://localhost:4200/dashboard',
-    logoutUrl: 'http://localhost:4200/home'
+    logoutRedirectUrl: 'http://localhost:4200/home',
+    tokenUrl: 'https://autoapi.auth.eu-west-2.amazoncognito.com/oauth2/token',
+    logoutUrl: 'https://autoapi.auth.eu-west-2.amazoncognito.com/logout'
   }
 };

@@ -21,14 +21,16 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    const URL = `https://${environment.awsmobile.domain}/logout?client_id=${environment.awsmobile.aws_user_pools_web_client_id}&logout_uri=${environment.awsmobile.logoutUrl}`;
+    // tslint:disable-next-line:max-line-length
+    const URL = `${environment.awsmobile.domain}/logout?client_id=${environment.awsmobile.aws_user_pools_web_client_id}&logout_uri=${environment.awsmobile.logoutRedirectUrl}`;
     localStorage.removeItem('currentUser');
     this.authenticationService.currentUserSubject.next(null);
     window.location.assign(URL);
   }
 
   login() {
-    const URL = `https://${environment.awsmobile.domain}/login?response_type=code&client_id=${environment.awsmobile.aws_user_pools_web_client_id}&redirect_uri=${environment.awsmobile.redirectUrl}`;
+    // tslint:disable-next-line:max-line-length
+    const URL = `${environment.awsmobile.domain}/login?response_type=code&client_id=${environment.awsmobile.aws_user_pools_web_client_id}&redirect_uri=${environment.awsmobile.redirectUrl}`;
     window.location.assign(URL);
   }
 

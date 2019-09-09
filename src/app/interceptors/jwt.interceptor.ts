@@ -3,6 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpHeaders } fro
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { AuthService } from '../services/auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -10,10 +11,10 @@ export class JwtInterceptor implements HttpInterceptor {
     }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-        if (request.url === 'https://autoapi.auth.eu-west-2.amazoncognito.com/oauth2/token') {
+        if (request.url === environment.awsmobile.tokenUrl) {
             return next.handle(request);
         }
-        if (request.url === 'https://autoapi.auth.eu-west-2.amazoncognito.com/logout') {
+        if (request.url === environment.awsmobile.logoutUrl) {
             return next.handle(request);
         }
 

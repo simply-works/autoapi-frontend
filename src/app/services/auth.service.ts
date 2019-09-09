@@ -57,7 +57,7 @@ export class AuthService {
 
   logout() {
     // remove user from local storage to log user out
-    const URL = `https://${environment.awsmobile.domain}/logout?client_id=${environment.awsmobile.aws_user_pools_web_client_id}&logout_uri=${environment.awsmobile.logoutUrl}`;
+    const URL = `${environment.awsmobile.domain}/logout?client_id=${environment.awsmobile.aws_user_pools_web_client_id}&logout_uri=${environment.awsmobile.logoutUrl}`;
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
     window.location.assign(URL);
@@ -152,7 +152,7 @@ export class AuthService {
   // }
 
   getAuthToken(code, grantType, type) {
-    const url = `https://${environment.awsmobile.domain}`;
+    const url = `${environment.awsmobile.tokenUrl}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
