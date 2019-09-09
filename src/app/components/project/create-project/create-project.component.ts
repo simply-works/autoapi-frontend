@@ -55,11 +55,12 @@ export class CreateProjectComponent implements OnInit {
 
       this.projectService.createProject(value).subscribe(res => {
         if (res && res.message) {
+          this.toast.showSuccessMessage(res.message);
           this.modal.close(res);
         }
       }, err => {
         if (err) {
-          this.modal.close(err);
+          this.toast.showErrorMessage(err.error.message);
         }
       });
     }

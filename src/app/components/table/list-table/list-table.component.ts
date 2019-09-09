@@ -110,6 +110,4 @@ export class ListTableComponent implements OnInit {
       this.projectName = res.project[0].name;
     });
   }
-
-
 }

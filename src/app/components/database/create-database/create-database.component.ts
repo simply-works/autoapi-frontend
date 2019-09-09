@@ -26,7 +26,7 @@ export class CreateDatabaseComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private databaseService: DatabaseService,
-    private toastService: ToastService,
+    private toast: ToastService,
     public modal: NgbActiveModal,
     public config: NgbModalConfig) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -50,10 +50,11 @@ export class CreateDatabaseComponent implements OnInit {
       const requestData = this.createRequestData(this.form.value);
       this.databaseService.createDatabases(requestData).subscribe(res => {
         if (res && res.message) {
+          this.toast.showSuccessMessage(res.message);
           this.modal.close(res);
         }
       }, err => {
-        this.modal.close(err);
+        this.toast.showErrorMessage(err.error.message);
       });
     }
   }

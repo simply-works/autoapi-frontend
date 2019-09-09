@@ -54,10 +54,8 @@ export class ListDatabaseComponent implements OnInit {
       if (result === 'ok') {
         this.databaseService.deleteDatabase(value).subscribe(res => {
           this.getDatabases();
-          this.toastService.showSuccessMessage('Deleted Successfully');
         }, err => {
           console.log(err);
-          this.toastService.showErrorMessage(err.message);
         });
       }
     }).catch((error) => {
@@ -71,7 +69,6 @@ export class ListDatabaseComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result && result.message === 'Created successfully') {
         this.getDatabases();
-        this.toastService.showSuccessMessage('Created Successfully');
       }
     }).catch((error) => {
       console.log(error);
