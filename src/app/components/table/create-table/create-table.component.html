@@ -33,16 +33,16 @@
       <div [formGroupName]="i">
         <div class="form-group" class="row cols-md-12">
 
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <label for="name">
               Column Name
             </label>
-            <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+            <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" pattern="^[a-zA-Z_$][a-zA-Z_$0-9]*$">
             <div *ngIf="submitted && getValidity(i)">
-              <span class="errorMsg" *ngIf="submitted && getValidity(i)"> Name and type are required</span>
+              <span class="errorMsg" *ngIf="submitted && getValidity(i)"> Name and type should be valid</span>
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <label for="type">
               Column Type
             </label>
@@ -50,15 +50,39 @@
               <option *ngFor="let obj of types" [value]="obj">{{obj}}</option>
             </select>
             <div *ngIf="submitted && form.get('column').errors" class="invalid-feedback">
-              <div *ngIf="form.get('column').errors.required"> Column Name is Mandatory</div>
+              <div *ngIf="form.get('column').errors.required"> Column type is Mandatory</div>
             </div>
           </div>
           <div class="col-sm-2" ngbRadioGroup name="primaryKey" formControlName='primaryKey' [(ngModel)]="model">
-            <label for="name">
+            <label for="primaryKey">
               Primary Key
             </label>
             <label ngbButtonLabel class="btn-primary">
               <input ngbButton type="radio" value='{{i}}'>
+            </label>
+          </div>
+          <div class="col-sm-2" ngbRadioGroup name="unique" formControlName='unique'>
+            <label for="unique">
+              Unique
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="checkbox" value='{{i}}' [checked]="unique[i]" (change)="uniqueChecked(i)">
+            </label>
+          </div>
+          <div class="col-sm-2" ngbRadioGroup name="notNull" formControlName='notNull'>
+            <label for="notNull">
+              Not Null
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="checkbox" value='{{i}}' [checked]="notNull[i]" (change)="notNullChecked(i)">
+            </label>
+          </div>
+          <div class="col-sm-2" ngbRadioGroup name="autoIncrement" formControlName='autoIncrement' *ngIf="model == i && col.controls.type.value == 'Number'">
+            <label for="autoIncrement">
+              Auto Increment
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+              <input ngbButton type="checkbox" value='{{i}}' [checked]="autoIncrement[i]" (change)="autoIncrementChecked(i)">
             </label>
           </div>
           <div class="col-sm-2" style="padding-top: 30px">

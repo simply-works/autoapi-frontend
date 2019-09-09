@@ -20,7 +20,10 @@ export class CreateTableComponent implements OnInit {
   loading = false;
   submitted = false;
   form: FormGroup;
-  model = 0;
+  model;
+  notNull = [];
+  unique = [];
+  autoIncrement = [];
   types: Array<string>;
   constructor(
     private router: Router,
@@ -52,7 +55,10 @@ export class CreateTableComponent implements OnInit {
       _.map(this.form.value.column, (item, index) => {
         column[item.name] = {
           type: `'${item.type}'`,
-          primaryKey: parseInt(item.primaryKey, 0) === index ? true : undefined
+          primaryKey: parseInt(item.primaryKey, 0) === index ? true : undefined,
+          unique: item.unique ? true : false,
+          notNull: item.notNull ? true : false,
+          autoIncrement: item.autoIncrement ? true : false
         };
       });
       const columnDetails = [column];
@@ -78,7 +84,10 @@ export class CreateTableComponent implements OnInit {
     return this.formBuilder.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
-      primaryKey: ''
+      primaryKey: '',
+      unique: '',
+      notNull: '',
+      autoIncrement: ''
     });
   }
 
@@ -97,4 +106,30 @@ export class CreateTableComponent implements OnInit {
     return this.formArr.controls[i].invalid;
   }
 
+  notNullChecked(i) {
+    if (this.notNull[i]) {
+      this.notNull[i] = !this.notNull[i];
+    } else {
+      this.notNull[i] = true;
+    }
+    this.form.value.column[i].notNull = this.notNull[i];
+  }
+
+  uniqueChecked(i) {
+    if (this.unique[i]) {
+      this.unique[i] = !this.unique[i];
+    } else {
+      this.unique[i] = true;
+    }
+    this.form.value.column[i].unique = this.unique[i];
+  }
+
+  autoIncrementChecked(i) {
+    if (this.autoIncrement[i]) {
+      this.autoIncrement[i] = !this.autoIncrement[i];
+    } else {
+      this.autoIncrement[i] = true;
+    }
+    this.form.value.column[i].autoIncrement = this.autoIncrement[i];
+  }
 }
