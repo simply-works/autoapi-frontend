@@ -12,6 +12,7 @@ import { CreateProjectComponent } from './components/project/create-project/crea
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SidenavDirective } from './directives/sidenav.directive';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
@@ -28,6 +29,9 @@ import { ViewTableDetailsComponent } from './components/table/view-table-details
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptors';
 
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,7 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     ListDatabaseComponent,
     DeleteDatabaseComponent,
     ViewTableDetailsComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +63,14 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
   entryComponents: [
