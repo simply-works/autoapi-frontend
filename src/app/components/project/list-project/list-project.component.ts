@@ -45,7 +45,7 @@ export class ListProjectComponent implements OnInit {
       if (err.status === 400) {
         return;
       } else {
-        this.toast.showErrorMessage(err.message);
+        this.toast.showErrorMessage(err.error.message);
       }
     });
   }
@@ -58,7 +58,7 @@ export class ListProjectComponent implements OnInit {
       if (result === 'ok') {
         this.projectService.deleteProject(value).subscribe(res => {
           this.getProject();
-          this.toast.showSuccessMessage('Deleted Successfully');
+          this.toast.showSuccessMessage(result.message);
         });
       }
     }).catch((error) => {

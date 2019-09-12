@@ -25,11 +25,11 @@
             <th scope="col">#</th>
             <th scope="col">Database Name</th>
             <th scope="col">Actions</th>
-            <th scope="col">Created Date</th>
-            <th scope="col">Last Updated Date</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="databases?.length > 0; else noDatabaseItem">
         <tr *ngFor="let database of databases; index as i">
             <th scope="row">{{ i + 1 }}</th>
             <td>
@@ -46,4 +46,11 @@
             <td>{{database.updated_at | date: 'dd/MM/yyyy'}}</td>
         </tr>
     </tbody>
+    <ng-template #noDatabaseItem>
+        <tbody>
+            <tr>
+                No database found
+            </tr>
+        </tbody>
+    </ng-template>
 </table>

@@ -54,12 +54,13 @@ export class ListDatabaseComponent implements OnInit {
       if (result === 'ok') {
         this.databaseService.deleteDatabase(value).subscribe(res => {
           this.getDatabases();
+          this.toastService.showSuccessMessage(result.message);
         }, err => {
-          console.log(err);
+            this.toastService.showErrorMessage(err.message);
         });
       }
     }).catch((error) => {
-      console.log(error);
+      this.toastService.showErrorMessage(error.message);
     });
   }
 
@@ -67,11 +68,13 @@ export class ListDatabaseComponent implements OnInit {
     const modalRef = this.modalService.open(CreateDatabaseComponent);
     modalRef.componentInstance.projectId = this.projectId;
     modalRef.result.then((result) => {
+    console.log("TCL: ListDatabaseComponent -> createDatabase -> result", result)
       if (result && result.message === 'Created successfully') {
         this.getDatabases();
       }
     }).catch((error) => {
-      console.log(error);
+    console.log("TCL: ListDatabaseComponent -> createDatabase -> error", error)
+      this.toastService.showErrorMessage(error.message);
     });
   }
 

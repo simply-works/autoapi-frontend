@@ -12,42 +12,67 @@
     </div>
 
 </div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Table Name</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Created Date</th>
-            <th scope="col">Last Updated Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let table of tables; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
-                <a (click)="viewTableDetails(table)">
-                    {{table.name}}
-                </a>
-            </td>
-            <td>
-                <button type="button" ngbAutofocus class="btn btn-primary" ngbTooltip="view table"
-                    (click)="viewTableDetails(table)">
-                    <span class="fa fa-eye"></span>
-                </button>&nbsp;
-                <!-- <button type="button" ngbAutofocus class="btn btn-warning" ngbTooltip="edit table"
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Table Name</th>
+                <th scope="col">API gateway URI</th>
+                <th scope="col">Lambda URI</th>
+                <th scope="col">API key value</th>
+                <th scope="col">Encrypted API key value</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="tables?.length > 0; else noTableItem">
+            <tr *ngFor="let table of tables; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                    <a (click)="viewTableDetails(table)">
+                        {{table.name}}
+                    </a>
+                </td>
+                <td>
+                    {{table.api_gateway_uri}}
+                </td>
+                <td>
+                    {{table.lambda_uri}}
+                </td>
+                <td>
+                    {{table.api_key_value}}
+                </td>
+                <td>
+                    {{table.encrypted_api_key_value}}
+                </td>
+                <td>
+                    <button type="button" ngbAutofocus class="btn btn-primary" ngbTooltip="view table"
+                        (click)="viewTableDetails(table)">
+                        <span class="fa fa-eye"></span>
+                    </button>&nbsp;
+                    <!-- <button type="button" ngbAutofocus class="btn btn-warning" ngbTooltip="edit table"
                 (click)="editTables(table)"><span class="fa fa-pencil"></span></button>&nbsp; -->
-                <button type="button" ngbAutofocus class="btn btn-danger" ngbTooltip="delete table"
-                    (click)="deleteTables(table)">
-                    <span class="fa fa-trash"></span>
-                </button>
-            </td>
-            <td>
-                {{table.created_at | date: 'dd/MM/yyyy'}}
-            </td>
-            <td>
-                {{table.updated_at | date: 'dd/MM/yyyy'}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+                    <button type="button" ngbAutofocus class="btn btn-danger" ngbTooltip="delete table"
+                        (click)="deleteTables(table)">
+                        <span class="fa fa-trash"></span>
+                    </button>
+                </td>
+                <td>
+                    {{table.created_at | date: 'dd/MM/yyyy'}}
+                </td>
+                <td>
+                    {{table.updated_at | date: 'dd/MM/yyyy'}}
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #noTableItem>
+            <tbody>
+                <tr>
+                    No Table found
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+</div>

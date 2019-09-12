@@ -14,11 +14,15 @@
 <app-loader></app-loader>
 <app-header></app-header>
 
-<div class="page">
-    <app-side-nav></app-side-nav>
-    <div class="fullHeight fullWidth container centerElement">
-        <alert></alert>
-        <router-outlet></router-outlet>
+<div class="page row">
+    <div class="col-md-3">
+        <app-side-nav></app-side-nav>
+    </div>
+    <div class="col-md-9">
+        <div class="">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

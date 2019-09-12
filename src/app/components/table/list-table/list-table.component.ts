@@ -72,7 +72,7 @@ export class ListTableComponent implements OnInit {
         });
       }
     }).catch((error) => {
-      console.log(error);
+      this.toastService.showErrorMessage(error.message);
     });
   }
 
@@ -85,7 +85,7 @@ export class ListTableComponent implements OnInit {
         this.toastService.showSuccessMessage('Created Successfully');
       }
     }).catch((error) => {
-      console.log(error);
+      this.toastService.showErrorMessage(error.message);
     });
   }
 
