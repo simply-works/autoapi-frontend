@@ -60,7 +60,8 @@ export class CreateProjectComponent implements OnInit {
         }
       }, err => {
         if (err) {
-          this.toast.showErrorMessage(err.error.message);
+          console.log("TCL: CreateProjectComponent -> onSubmit -> err", err)
+          // this.toast.showErrorMessage(err.error.message);
         }
       });
     }

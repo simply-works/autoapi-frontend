@@ -45,7 +45,8 @@ export class ListProjectComponent implements OnInit {
       if (err.status === 400) {
         return;
       } else {
-        this.toast.showErrorMessage(err.error.message);
+        console.log("TCL: ListProjectComponent -> getProject -> err", err);
+        // this.toast.showErrorMessage(err.error.message);
       }
     });
   }

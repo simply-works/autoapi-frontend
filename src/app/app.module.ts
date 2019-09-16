@@ -31,7 +31,7 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
 
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
-import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { LoaderInterceptor, DEFAULT_TIMEOUT } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,8 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     LoaderService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: DEFAULT_TIMEOUT, useValue: 180000 }],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
   entryComponents: [

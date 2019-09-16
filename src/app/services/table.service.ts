@@ -13,7 +13,8 @@ export class TableService {
 
   getTables(databaseId): Observable<any> {
     const url = `${environment.baseURL}/tables?database_id=${databaseId}`;
-    return this.http.get<any>(url);
+    const headers = { headers: new HttpHeaders({ timeout: `${20000}` }) };
+    return this.http.get<any>(url, headers);
   }
 
   createTable(table: Table): Observable<any> {

@@ -16,7 +16,9 @@ export class ProjectService {
 
   getProjects(): Observable<any> {
     const url = `${environment.baseURL}/projects`;
-    return this.http.get<any>(url);
+    const headers = { headers: new HttpHeaders({ timeout: `${20000}` }) };
+    console.log("TCL: ProjectService -> constructor -> headers", headers)
+    return this.http.get<any>(url, headers);
   }
 
   createProject(project: Project): Observable<any> {

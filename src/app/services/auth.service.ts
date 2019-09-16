@@ -156,6 +156,7 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'timeout': '180000',
         Authorization: `Basic NDNiMDgzYXVib3JsZHQ5MGh2YjA4cGVmdGg6bGZqdjRsZ2Q1a203OXBhc2hsODd1anUwcWpjYTlvYjlwdHF1MjY3c29zdGkza2J2NWc3`
       })
     };

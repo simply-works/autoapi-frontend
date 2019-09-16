@@ -63,7 +63,7 @@ div.content {
 } */
 
 /* Fixed sidenav, full height */
-.sidenav {
+/* .sidenav {
   height: 100%;
   width: 200px;
   position: fixed;
@@ -73,6 +73,14 @@ div.content {
   background-color: #111;
   overflow-x: hidden;
   padding-top: 100px;
+} */
+
+.sidenav {
+  background-color: #111;
+  padding-right: 20px;
+  padding-top: 20px;
+  min-height: calc(100vh - 50px);
+  padding: 0;
 }
 
 /* Style the sidenav links and the dropdown button */
