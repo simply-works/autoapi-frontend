@@ -80,9 +80,9 @@ export class ListTableComponent implements OnInit {
     const modalRef = this.modalService.open(CreateTableComponent, { size: 'lg' });
     modalRef.componentInstance.databaseId = this.databaseId;
     modalRef.result.then((result) => {
-      if (result && result.message === 'Created successfully') {
+      if (result && result.message === 'Table creation in progress') {
+        this.toastService.showSuccessMessage('Your request is in progress please come back after a while');
         this.getTables();
-        this.toastService.showSuccessMessage('Created Successfully');
       }
     }).catch((error) => {
       this.toastService.showErrorMessage(error.message);
